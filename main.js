@@ -189,4 +189,6 @@ var _APP = null;
 
 window.addEventListener('DOMContentLoaded', () => {
   _APP = new LoadModelDemo();
+
+  module.exports = _APP;
 });
