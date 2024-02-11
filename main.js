@@ -57,8 +57,8 @@ class LoadModelDemo {
 
     const controls = new OrbitControls(
       this._camera, this._threejs.domElement);
-    controls.target.set(0, 20, 0);
-    controls.update();
+    //controls.target.set(0, 20, 0);
+    //controls.update();
 
 /*
     const plane = new THREE.Mesh(
@@ -140,6 +140,7 @@ class LoadModelDemo {
     loader.load('./scene.glb', (gltf) => {
       gltf.scene.traverse(c => {
         c.castShadow = true;
+        c.receiveShadow = true;
       });
 
       const m = new THREE.AnimationMixer( gltf.scene );
