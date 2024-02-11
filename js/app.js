@@ -105,11 +105,11 @@ var APP = {
 
 			var sceneOBJ = json.scene;
 
-			const animations = loader.parse( sceneOBJ.animations );
+			const animations = sceneOBJ.animations;
 			alert(animations);
 
 			if (animations && animations.length > 0) {
-				const m = new THREE.AnimationMixer(scene);
+				const m = new THREE.AnimationMixer(sceneOBJ);
 				_mixers.push(m);
 				const action = m.clipAction( animations[ 0 ] );
 				action.play();
