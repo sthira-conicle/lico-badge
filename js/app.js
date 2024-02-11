@@ -111,7 +111,7 @@ var APP = {
 			if (animations && animations.length > 0) {
 				const m = new THREE.AnimationMixer(sceneOBJ);
 				_mixers.push(m);
-				const action = m.clipAction( animations[ 0 ] );
+				const action = m.clipAction( animations[ 0 ].tracks );
 				action.play();
 
 				renderer.render(scene, camera);
