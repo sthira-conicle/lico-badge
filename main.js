@@ -135,7 +135,7 @@ class LoadModelDemo {
 
   _LoadModel() {
     const loader = new GLTFLoader();
-    loader.load('./scene-2.glb', (gltf) => {
+    loader.load('./scene.glb', (gltf) => {
       gltf.scene.traverse(c => {
         c.castShadow = true;
         c.receiveShadow = true;
