@@ -4,7 +4,6 @@ import {FBXLoader} from 'FBXLoader';
 import {GLTFLoader} from 'GLTFLoader';
 import {OrbitControls} from 'OrbitControls';
 
-
 class LoadModelDemo {
   constructor() {
     this._Initialize();
@@ -184,7 +183,7 @@ class LoadModelDemo {
 }
 
 
-let _APP = null;
+var _APP = null;
 
 window.addEventListener('DOMContentLoaded', () => {
   _APP = new LoadModelDemo();
