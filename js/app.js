@@ -97,6 +97,28 @@ var APP = {
 
 			dispatch( events.init, arguments );
 
+
+			// Assuming animations are part of the loaded object
+			const animations = scene.animations;
+
+			if (animations && animations.length > 0) {
+				const mixer = new THREE.AnimationMixer(scene);
+		
+				animations.forEach((clip) => {
+					const action = mixer.clipAction(clip);
+					action.play();
+				});
+	/*	
+				function animateAction(time) {
+					requestAnimationFrame(animate);
+					const delta = clock.getDelta(); // assuming clock is an instance of THREE.Clock
+					mixer.update(delta);
+					renderer.render(scene, camera);
+				}
+	*/
+				animate();
+			}
+
 		};
 
 		this.setCamera = function ( value ) {
@@ -254,28 +276,6 @@ var APP = {
 		}
 
 
-		var sceneOBJ = json.scene;
-
-		// Assuming animations are part of the loaded object
-		const animations = sceneOBJ.animations;
-
-		if (animations && animations.length > 0) {
-			const mixer = new THREE.AnimationMixer(sceneOBJ);
-	
-			animations.forEach((clip) => {
-				const action = mixer.clipAction(clip);
-				action.play();
-			});
-/*	
-			function animateAction(time) {
-				requestAnimationFrame(animate);
-				const delta = clock.getDelta(); // assuming clock is an instance of THREE.Clock
-				mixer.update(delta);
-				renderer.render(scene, camera);
-			}
-*/
-			animate();
-		}
 
 	}
 
