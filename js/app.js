@@ -102,7 +102,10 @@ var APP = {
 
 
 			// Assuming animations are part of the loaded object
-			const animations = loader.parse( json.scene.animations );
+
+			var sceneOBJ = json.scene;
+
+			const animations = loader.parse( sceneOBJ.animations );
 			alert(animations);
 
 			if (animations && animations.length > 0) {
