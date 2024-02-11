@@ -102,13 +102,13 @@ var APP = {
 
 
 			// Assuming animations are part of the loaded object
-			alert(scene.animations);
-			const animations = scene.animations;
+			const animations = loader.parse( json.scene.animations );
+			alert(animations);
 
 			if (animations && animations.length > 0) {
 				const m = new THREE.AnimationMixer(scene);
 				_mixers.push(m);
-				const action = m.clipAction( scene.animations[ 0 ] );
+				const action = m.clipAction( animations[ 0 ] );
 				action.play();
 
 				renderer.render(scene, camera);
