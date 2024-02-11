@@ -60,7 +60,7 @@ class LoadModelDemo {
     controls.target.set(0, 20, 0);
     controls.update();
 
-
+/*
     const plane = new THREE.Mesh(
         new THREE.PlaneGeometry(10, 10, 10, 10),
         new THREE.MeshStandardMaterial({
@@ -70,7 +70,7 @@ class LoadModelDemo {
     plane.receiveShadow = true;
     plane.rotation.x = -Math.PI / 2;
     this._scene.add(plane);
-
+*/
 
 
     this._mixers = [];
