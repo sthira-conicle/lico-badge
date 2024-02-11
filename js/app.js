@@ -102,6 +102,7 @@ var APP = {
 
 
 			// Assuming animations are part of the loaded object
+			alert(scene.animations);
 			const animations = scene.animations;
 
 			if (animations && animations.length > 0) {
@@ -112,7 +113,7 @@ var APP = {
 
 				renderer.render(scene, camera);
 			}
-			
+
 			this._RAF();
 
 		};
