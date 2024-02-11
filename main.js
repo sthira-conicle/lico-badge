@@ -187,7 +187,7 @@ class LoadModelDemo {
 
 var _APP = null;
 
-export const set_var = (value) => _APP.tmp = value;
+export const set_var = (value) => _APP._camera.position.set(0, value, 2.3);
 
 window.addEventListener('DOMContentLoaded', () => {
   _APP = new LoadModelDemo();
