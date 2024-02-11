@@ -7,6 +7,7 @@ var APP = {
 
 		var loader = new THREE.ObjectLoader();
 		var camera, scene;
+		var clock = THREE.Clock;
 
 		var vrButton = VRButton.createButton( renderer ); // eslint-disable-line no-undef
 
@@ -108,14 +109,14 @@ var APP = {
 					const action = mixer.clipAction(clip);
 					action.play();
 				});
-	/*	
+	
 				function animateAction(time) {
 					requestAnimationFrame(animate);
 					const delta = clock.getDelta(); // assuming clock is an instance of THREE.Clock
 					mixer.update(delta);
 					renderer.render(scene, camera);
 				}
-	*/
+
 				animate();
 			}
 
@@ -166,7 +167,7 @@ var APP = {
 			}
 
 		}
-
+/*
 		var time, startTime, prevTime;
 
 		function animate() {
@@ -228,7 +229,7 @@ var APP = {
 
 		this.render = function ( time ) {
 
-			dispatch( events.update, { time: time * 1000, delta: 0 /* TODO */ } );
+			dispatch( events.update, { time: time * 1000, delta: 0 } );
 
 			renderer.render( scene, camera );
 
@@ -243,7 +244,6 @@ var APP = {
 
 		};
 
-		//
 
 		function onKeyDown( event ) {
 
@@ -275,7 +275,7 @@ var APP = {
 
 		}
 
-
+*/
 
 	}
 
