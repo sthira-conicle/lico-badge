@@ -24,15 +24,13 @@ class LoadModelDemo {
       this._OnWindowResize();
     }, false);
 
-    this.tmp = 0;
-
     const fov = 50;
     const aspect = 1920 / 1080;
     const near = 0.01;
     const far = 1000.0;
     this._camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     this._camera.position.set(0, 0.5, 2.3);
-    this._camera.lookAt(new THREE.Vector3(0, this.tmp, 0));
+    this._camera.lookAt(new THREE.Vector3(0, 2, 0));
 
     this._scene = new THREE.Scene();
 
@@ -185,12 +183,9 @@ class LoadModelDemo {
 }
 
 
-var _APP = null;
+let _APP = null;
 
-export const set_var = (value) => _APP._camera.position.set(0, value, 2.3);
 
 window.addEventListener('DOMContentLoaded', () => {
   _APP = new LoadModelDemo();
-
-  
 });
