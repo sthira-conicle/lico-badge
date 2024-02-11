@@ -35,7 +35,6 @@ class LoadModelDemo {
     this._scene = new THREE.Scene();
 
 
-/*
     let light = new THREE.DirectionalLight(0xFFFFFF, 5.0);
     light.position.set(5, 10, 7.5);
     light.target.position.set(0, 0, 0);
@@ -53,7 +52,6 @@ class LoadModelDemo {
 
     light = new THREE.AmbientLight(0x846E62, 5.0);
     this._scene.add(light);
-*/
 
     const controls = new OrbitControls(
       this._camera, this._threejs.domElement);
