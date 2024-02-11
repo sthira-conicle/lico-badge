@@ -62,6 +62,7 @@ class LoadModelDemo {
     controls.target.set(0, 20, 0);
     controls.update();
 
+/*
     const loader = new THREE.CubeTextureLoader();
     const texture = loader.load([
         './resources/posx.jpg',
@@ -72,7 +73,7 @@ class LoadModelDemo {
         './resources/negz.jpg',
     ]);
     this._scene.background = texture;
-
+*/
 
 
     const plane = new THREE.Mesh(
