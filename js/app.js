@@ -12,6 +12,8 @@ var APP = {
 		var vrButton = VRButton.createButton( renderer ); // eslint-disable-line no-undef
 
 		var events = {};
+		var _mixers = [];
+		var _previousRAF = null;
 
 		var dom = document.createElement( 'div' );
 		dom.appendChild( renderer.domElement );
@@ -103,24 +105,39 @@ var APP = {
 			const animations = scene.animations;
 
 			if (animations && animations.length > 0) {
-				const mixer = new THREE.AnimationMixer(scene);
-		
-				animations.forEach((clip) => {
-					const action = mixer.clipAction(clip);
-					action.play();
-				});
-	
-				function animateAction(time) {
-					requestAnimationFrame(animate);
-					const delta = clock.getDelta(); // assuming clock is an instance of THREE.Clock
-					mixer.update(delta);
-					renderer.render(scene, camera);
-				}
+				const m = new THREE.AnimationMixer(scene);
+				_mixers.push(m);
+				const action = m.clipAction( scene.animations[ 0 ] );
+				action.play();
 
-				animate();
+				renderer.render(scene, camera);
 			}
+			
+			this._RAF();
 
 		};
+
+		this._RAF = function() {
+			requestAnimationFrame((t) => {
+			  if (_previousRAF === null) {
+				_previousRAF = t;
+			  }
+		
+			  this._RAF();
+		
+			  renderer.render(scene, camera);
+			  this._Step(t - _previousRAF);
+			  _previousRAF = t;
+			});
+		};
+
+		this._Step = function(timeElapsed) {
+			const timeElapsedS = timeElapsed * 0.001;
+			if (_mixers) {
+			  _mixers.map(m => m.update(timeElapsedS));
+			}
+		};
+
 
 		this.setCamera = function ( value ) {
 
