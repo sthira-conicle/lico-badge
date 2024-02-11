@@ -34,7 +34,7 @@ class LoadModelDemo {
 
     this._scene = new THREE.Scene();
 
-/*
+
 
     let light = new THREE.DirectionalLight(0xFFFFFF, 1.0);
     light.position.set(20, 100, 10);
@@ -85,7 +85,7 @@ class LoadModelDemo {
     plane.rotation.x = -Math.PI / 2;
     this._scene.add(plane);
 
-*/
+
 
     this._mixers = [];
     this._previousRAF = null;
