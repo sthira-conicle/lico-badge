@@ -22,8 +22,6 @@ var APP = {
 
 		this.load = function ( json ) {
 
-			alert("xxxx");
-
 			var project = json.project;
 
 			if ( project.vr !== undefined ) renderer.xr.enabled = project.vr;
