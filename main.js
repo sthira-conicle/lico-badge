@@ -187,8 +187,10 @@ class LoadModelDemo {
 
 var _APP = null;
 
+export const set_var = (value) => _APP.tmp = value;
+
 window.addEventListener('DOMContentLoaded', () => {
   _APP = new LoadModelDemo();
 
-  module.exports = _APP;
+  
 });
