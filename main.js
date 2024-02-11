@@ -156,7 +156,7 @@ class LoadModelDemo {
         c.castShadow = true;
       });
 
-      mixer = new THREE.AnimationMixer( gltf.scene );
+      const mixer = new THREE.AnimationMixer( gltf.scene );
       const action = mixer.clipAction( gltf.animations[ 0 ] );
       action.play();
 
