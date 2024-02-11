@@ -149,6 +149,9 @@ var APP = {
 
 		function animate() {
 
+
+			requestAnimationFrame(animate);
+
 			time = performance.now();
 
 			try {
@@ -248,6 +251,30 @@ var APP = {
 
 			dispatch( events.pointermove, event );
 
+		}
+
+
+		var sceneOBJ = json.scene;
+
+		// Assuming animations are part of the loaded object
+		const animations = sceneOBJ.animations;
+
+		if (animations && animations.length > 0) {
+			const mixer = new THREE.AnimationMixer(sceneOBJ);
+	
+			animations.forEach((clip) => {
+				const action = mixer.clipAction(clip);
+				action.play();
+			});
+/*	
+			function animateAction(time) {
+				requestAnimationFrame(animate);
+				const delta = clock.getDelta(); // assuming clock is an instance of THREE.Clock
+				mixer.update(delta);
+				renderer.render(scene, camera);
+			}
+*/
+			animate();
 		}
 
 	}
