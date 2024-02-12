@@ -128,6 +128,12 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.querySelector('input[name=action]:checked').addEventListener('change', elm => {
-  _APP.action[elm.value].play();
-}, false);
+
+
+Array.from(document.querySelectorAll('input[name=action]')).forEach((element,index) => {
+  element.addEventListener('click', () => {
+    if (element.checked) {
+      _APP.action[element.value].play();
+    }
+  }, false);
+}); 
