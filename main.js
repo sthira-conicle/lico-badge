@@ -77,8 +77,11 @@ class LoadModelDemo {
 
       const m = new THREE.AnimationMixer( gltf.scene );
       this._mixers.push(m);
-      const action = m.clipAction( gltf.animations[ 0 ] );
-      action.play();
+      const action = [];
+      gltf.animations.forEach((element,i) => {
+        action[i] = m.clipAction( element );
+      });
+      action[0].play();
 
       this._scene.add(gltf.scene);
     });
