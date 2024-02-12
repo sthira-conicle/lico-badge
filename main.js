@@ -58,6 +58,8 @@ class LoadModelDemo {
       this._camera, this._threejs.domElement);
 */
 
+    this._OnWindowResize();
+
     this._mixers = [];
     this._previousRAF = null;
 
