@@ -30,7 +30,7 @@ class LoadModelDemo {
     const far = 1000.0;
     this._camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     this._camera.position.set(0, 0.5, 2.3);
-    this._camera.lookAt(new THREE.Vector3(0, 2, 0));
+    this._camera.lookAt(new THREE.Vector3(0, 0.6, 0));
 
     this._scene = new THREE.Scene();
 
@@ -53,84 +53,16 @@ class LoadModelDemo {
     light = new THREE.AmbientLight(0x846E62, 5.0);
     this._scene.add(light);
 
+/*
     const controls = new OrbitControls(
       this._camera, this._threejs.domElement);
-    //controls.target.set(0, 20, 0);
-    //controls.update();
-
-/*
-    const plane = new THREE.Mesh(
-        new THREE.PlaneGeometry(10, 10, 10, 10),
-        new THREE.MeshStandardMaterial({
-            color: 0xFF2E38,
-          }));
-    plane.castShadow = false;
-    plane.receiveShadow = true;
-    plane.rotation.x = -Math.PI / 2;
-    this._scene.add(plane);
 */
-
 
     this._mixers = [];
     this._previousRAF = null;
 
     this._LoadModel();
-    // this._LoadAnimatedModelAndPlay(
-    //     './resources/dancer/', 'girl.fbx', 'dance.fbx', new THREE.Vector3(0, -1.5, 5));
-    // this._LoadAnimatedModelAndPlay(
-    //     './resources/dancer/', 'dancer.fbx', 'Silly Dancing.fbx', new THREE.Vector3(12, 0, -10));
-    // this._LoadAnimatedModelAndPlay(
-    //     './resources/dancer/', 'dancer.fbx', 'Silly Dancing.fbx', new THREE.Vector3(-12, 0, -10));
     this._RAF();
-  }
-
-  _LoadAnimatedModel() {
-    const loader = new FBXLoader();
-    loader.setPath('./resources/zombie/');
-    loader.load('mremireh_o_desbiens.fbx', (fbx) => {
-      fbx.scale.setScalar(0.1);
-      fbx.traverse(c => {
-        c.castShadow = true;
-      });
-
-      const params = {
-        target: fbx,
-        camera: this._camera,
-      }
-      this._controls = new BasicCharacterControls(params);
-
-      const anim = new FBXLoader();
-      anim.setPath('./resources/zombie/');
-      anim.load('walk.fbx', (anim) => {
-        const m = new THREE.AnimationMixer(fbx);
-        this._mixers.push(m);
-        const idle = m.clipAction(anim.animations[0]);
-        idle.play();
-      });
-      this._scene.add(fbx);
-    });
-  }
-
-  _LoadAnimatedModelAndPlay(path, modelFile, animFile, offset) {
-    const loader = new FBXLoader();
-    loader.setPath(path);
-    loader.load(modelFile, (fbx) => {
-      fbx.scale.setScalar(0.1);
-      fbx.traverse(c => {
-        c.castShadow = true;
-      });
-      fbx.position.copy(offset);
-
-      const anim = new FBXLoader();
-      anim.setPath(path);
-      anim.load(animFile, (anim) => {
-        const m = new THREE.AnimationMixer(fbx);
-        this._mixers.push(m);
-        const idle = m.clipAction(anim.animations[0]);
-        idle.play();
-      });
-      this._scene.add(fbx);
-    });
   }
 
   _LoadModel() {
