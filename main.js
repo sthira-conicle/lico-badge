@@ -26,7 +26,7 @@ class LoadModelDemo {
 
     const fov = 50;
     const aspect = 1920 / 1080;
-    const near = 0.01;
+    const near = 1;
     const far = 1000.0;
     this._camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     this._camera.position.set(0, 0.5, 2.3);
@@ -42,7 +42,7 @@ class LoadModelDemo {
     light.shadow.bias = 0;
     light.shadow.mapSize.width = 2048;
     light.shadow.mapSize.height = 2048;
-    light.shadow.camera.near = 0.5;
+    light.shadow.camera.near = 1;
     light.shadow.camera.far = 500;
     light.shadow.camera.left = -5;
     light.shadow.camera.right = 5;
