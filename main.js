@@ -63,6 +63,7 @@ class LoadModelDemo {
     this._mixers = [];
     this._previousRAF = null;
     this.action = [];
+    this.playing = 0;
 
     this._LoadModel();
     this._RAF();
@@ -82,6 +83,7 @@ class LoadModelDemo {
         this.action[i] = m.clipAction( element );
       });
       this.action[0].play();
+      this.playing = 0;
 
       this._scene.add(gltf.scene);
     });
@@ -132,8 +134,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
 Array.from(document.querySelectorAll('input[name=action]')).forEach((element,index) => {
   element.addEventListener('click', () => {
+    _APP.action[_APP.playing].stop();
     if (element.checked) {
       _APP.action[element.value].play();
+      _APP.playing = element.value;
     }
   }, false);
 }); 
