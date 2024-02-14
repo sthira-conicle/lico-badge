@@ -71,7 +71,7 @@ class LoadModelDemo {
 
   _LoadModel() {
     const loader = new GLTFLoader();
-    loader.load('./scene.glb', (gltf) => {
+    loader.load('./lico-actions-3-subd.glb', (gltf) => {
       gltf.scene.traverse(c => {
         c.castShadow = true;
         c.receiveShadow = true;
