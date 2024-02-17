@@ -35,7 +35,7 @@ class LoadModelDemo {
     this._scene = new THREE.Scene();
 
 
-    let light = new THREE.DirectionalLight(0xFFFFFF, 5.0);
+    let light = new THREE.DirectionalLight(0xFFFFFF, 4.0);
     light.position.set(5, 10, 7.5);
     light.target.position.set(0, 0, 0);
     light.castShadow = true;
