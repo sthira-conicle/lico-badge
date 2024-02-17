@@ -64,7 +64,7 @@ class LoadModelDemo {
     this._previousRAF = null;
     this.action = [];
     this.playing = 0;
-    this.headAction = [0,3];
+    this.headAction = [0];
     this.neckBone = null;
     this.mouse = new THREE.Vector2();
     this._LoadModel();
@@ -176,7 +176,6 @@ Array.from(document.querySelectorAll('input[name=action]')).forEach((element,ind
     _APP.action[_APP.playing].stop();
     if (element.checked) {
       _APP.playing = parseInt(element.value);
-      alert(_APP.headAction[0] + ' ' + _APP.playing + ' ' + _APP.headAction.includes(_APP.playing));
       _APP.action[_APP.playing].play();
     }
   }, false);
