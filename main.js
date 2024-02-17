@@ -66,11 +66,13 @@ class LoadModelDemo {
     this.playing = 0;
 
     this._LoadModel();
+    this.neckBone = null;
+    this.mouse = new THREE.Vector2();
+    this._threejs.domElement.addEventListener('mousemove', _onMouseMove, false);
     this._RAF();
   }
 
   _LoadModel() {
-    var neckBone;
     const loader = new GLTFLoader();
     loader.load('./lico-actions-subd.glb', (gltf) => {
       gltf.scene.traverse(c => {
@@ -110,20 +112,17 @@ class LoadModelDemo {
 
       this._scene.add(gltf.scene);
 
-      neckBone = gltf.scene.getObjectByName('mixamorig:Head');
+      this.neckBone = gltf.scene.getObjectByName('mixamorig:Head');
     });
 
+  }
+  _onMouseMove(event) {
+      this.mouse.set(
+          (event.clientX / this._threejs.domElement.clientWidth) * 2 - 1,
+          -(event.clientY / this._threejs.domElement.clientHeight) * 2 + 1
+      );
 
-    const mouse = new THREE.Vector2();
-            function onMouseMove(event) {
-                mouse.set(
-                    (event.clientX / this._threejs.domElement.clientWidth) * 2 - 1,
-                    -(event.clientY / this._threejs.domElement.clientHeight) * 2 + 1
-                );
-
-                neckBone && neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
-            }
-            this._threejs.domElement.addEventListener('mousemove', onMouseMove, false);
+      neckBone && neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
   }
 
   _OnWindowResize() {
