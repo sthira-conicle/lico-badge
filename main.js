@@ -122,7 +122,7 @@ class LoadModelDemo {
           -(event.clientY / this._threejs.domElement.clientHeight) * 2 + 1
       );
 
-      neckBone && neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
+      this.neckBone && this.neckBone.lookAt(this.mouse.x - 0.1, this.mouse.y + 1.1, 1);
   }
 
   _OnWindowResize() {
