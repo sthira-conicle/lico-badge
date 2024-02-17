@@ -111,7 +111,9 @@ class LoadModelDemo {
 
       this._scene.add(gltf.scene);
 
+      alert(this.neckBone);
       this.neckBone = gltf.scene.getObjectByName('mixamorig:Head');
+      alert(this.neckBone);
     });
 
   }
