@@ -65,8 +65,8 @@ class LoadModelDemo {
     this.action = [];
     this.playing = 0;
     this.headAction = [0];
-
     this.neckBone = null;
+    this.mouse = new THREE.Vector2();
     this._LoadModel();
     this._threejs.domElement.addEventListener('mousemove', (event) => this._onMouseMove(event), false);
     this._RAF();
@@ -118,15 +118,14 @@ class LoadModelDemo {
 
   }
   _onMouseMove(event) {
-      if (this.headAction.includes(this.playing)){
-        let mouse = new THREE.Vector2();
-        mouse.set(
-            (event.clientX / event.currentTarget.clientWidth) * 2 - 1,
-            -(event.clientY / event.currentTarget.clientHeight) * 2 + 1
-        );
+    if (this.headAction.includes(this.playing)){
+      this.mouse.set(
+          (event.clientX / event.currentTarget.clientWidth) * 2 - 1,
+          -(event.clientY / event.currentTarget.clientHeight) * 2 + 1
+      );
 
-        this.neckBone && this.neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
-      }
+      this.neckBone && this.neckBone.lookAt(this.mouse.x - 0.1, this.mouse.y + 1.1, 1);
+    }
   }
 
   _OnWindowResize() {
@@ -177,6 +176,7 @@ Array.from(document.querySelectorAll('input[name=action]')).forEach((element,ind
     _APP.action[_APP.playing].stop();
     if (element.checked) {
       _APP.playing = element.value;
+      alert(_APP.headAction.includes(_APP.playing));
       _APP.action[element.value].play();
     }
   }, false);
