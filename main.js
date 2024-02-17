@@ -175,5 +175,6 @@ Array.from(document.querySelectorAll('input[name=action]')).forEach((element,ind
       _APP.action[element.value].play();
       _APP.playing = element.value;
     }
+    alert(_APP.neckBone);
   }, false);
 }); 
