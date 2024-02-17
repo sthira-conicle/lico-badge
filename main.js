@@ -124,7 +124,7 @@ class LoadModelDemo {
           -(event.clientY / event.currentTarget.clientHeight) * 2 + 1
       );
 
-      this.neckBone && this.neckBone.lookAt(this.mouse.x / 2, this.mouse.y / 2, 1);
+      this.neckBone && this.neckBone.lookAt(this.mouse.x / 2, (this.mouse.y + 0.5) / 2, 1);
     }
   }
 
