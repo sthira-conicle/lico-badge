@@ -89,15 +89,19 @@ class LoadModelDemo {
 
       });
 
-      gltf.animations[0].tracks.forEach((t, i) => {
-          if (t.name.includes('mixamorigHead.quaternion')) {
-            this.headAction.push(i);
-          }
-      });
-
       this.headAction.forEach((i) => {
-          console.log('removing ' + i)
-          gltf.animations[0].tracks.splice(i, 1)
+        const idsToRemove = [];
+
+        gltf.animations[i].tracks.forEach((t, j) => {
+            if (t.name.includes('mixamorigHead.quaternion')) {
+              idsToRemove.push(j);
+            }
+        });
+  
+        idsToRemove.forEach((j) => {
+            console.log('removing ' + i + ' ' + j)
+            gltf.animations[i].tracks.splice(j, 1)
+        });
       });
 
       const m = new THREE.AnimationMixer( gltf.scene );
