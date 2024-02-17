@@ -64,6 +64,7 @@ class LoadModelDemo {
     this._previousRAF = null;
     this.action = [];
     this.playing = 0;
+    this.headAction = [0];
 
     this.neckBone = null;
     this._LoadModel();
@@ -88,18 +89,16 @@ class LoadModelDemo {
 
       });
 
-      const idsToRemove = [];
-
       gltf.animations[0].tracks.forEach((t, i) => {
           if (t.name.includes('mixamorigHead.quaternion')) {
-              idsToRemove.push(i)
+            this.headAction.push(i);
           }
-      })
+      });
 
-      idsToRemove.forEach((i) => {
+      this.headAction.forEach((i) => {
           console.log('removing ' + i)
           gltf.animations[0].tracks.splice(i, 1)
-      })
+      });
 
       const m = new THREE.AnimationMixer( gltf.scene );
       this._mixers.push(m);
@@ -115,13 +114,15 @@ class LoadModelDemo {
 
   }
   _onMouseMove(event) {
-      let mouse = new THREE.Vector2();
-      mouse.set(
-          (event.clientX / event.currentTarget.clientWidth) * 2 - 1,
-          -(event.clientY / event.currentTarget.clientHeight) * 2 + 1
-      );
+      if (this.headAction.includes(this.playing)){
+        let mouse = new THREE.Vector2();
+        mouse.set(
+            (event.clientX / event.currentTarget.clientWidth) * 2 - 1,
+            -(event.clientY / event.currentTarget.clientHeight) * 2 + 1
+        );
 
-      this.neckBone && this.neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
+        this.neckBone && this.neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
+      }
   }
 
   _OnWindowResize() {
