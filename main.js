@@ -86,6 +86,19 @@ class LoadModelDemo {
 
       });
 
+      const idsToRemove = []
+
+      gltf.animations[0].tracks.forEach((t, i) => {
+          if (t.name.includes('mixamorig:Neck.quaternion')) {
+              idsToRemove.push(i)
+          }
+      })
+
+      idsToRemove.forEach((i) => {
+          console.log('removing ' + i)
+          gltf.animations[0].tracks.splice(i, 1)
+      })
+
       const m = new THREE.AnimationMixer( gltf.scene );
       this._mixers.push(m);
       gltf.animations.forEach((element,i) => {
@@ -96,6 +109,19 @@ class LoadModelDemo {
 
       this._scene.add(gltf.scene);
     });
+
+    neckBone = gltf.scene.getObjectByName('mixamorig:Head')
+
+    const mouse = new THREE.Vector2();
+            function onMouseMove(event) {
+                mouse.set(
+                    (event.clientX / renderer.domElement.clientWidth) * 2 - 1,
+                    -(event.clientY / renderer.domElement.clientHeight) * 2 + 1
+                );
+
+                neckBone && neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
+            }
+            renderer.domElement.addEventListener('mousemove', onMouseMove, false);
   }
 
   _OnWindowResize() {
