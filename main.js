@@ -176,7 +176,7 @@ Array.from(document.querySelectorAll('input[name=action]')).forEach((element,ind
     _APP.action[_APP.playing].stop();
     if (element.checked) {
       _APP.playing = element.value;
-      alert(_APP.headAction.includes(_APP.playing));
+      alert(_APP.playing + ' ' + element.value + ' ' + _APP.headAction.includes(_APP.playing));
       _APP.action[element.value].play();
     }
   }, false);
