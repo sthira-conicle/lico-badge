@@ -71,7 +71,7 @@ class LoadModelDemo {
 
   _LoadModel() {
     const loader = new GLTFLoader();
-    loader.load('./lico-actions-3-subd.glb', (gltf) => {
+    loader.load('./lico-actions-subd.glb', (gltf) => {
       gltf.scene.traverse(c => {
         if (c.material)
           c.material.depthWrite = true;
