@@ -176,8 +176,8 @@ Array.from(document.querySelectorAll('input[name=action]')).forEach((element,ind
   element.addEventListener('click', () => {
     _APP.action[_APP.playing].stop();
     if (element.checked) {
-      _APP.action[element.value].play();
       _APP.playing = element.value;
+      _APP.action[element.value].play();
     }
   }, false);
 }); 
