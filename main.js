@@ -118,7 +118,6 @@ class LoadModelDemo {
 
   }
   _onMouseMove(event, neckBone, clientWidth, clientHeight) {
-    alert(clientWidth);
       let mouse = new THREE.Vector2();
       mouse.set(
           (event.clientX / clientWidth) * 2 - 1,
