@@ -64,7 +64,7 @@ class LoadModelDemo {
     this._previousRAF = null;
     this.action = [];
     this.playing = 0;
-    this.headAction = [0];
+    this.headAction = [0,3];
     this.neckBone = null;
     this.mouse = new THREE.Vector2();
     this._LoadModel();
