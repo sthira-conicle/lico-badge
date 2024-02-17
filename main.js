@@ -73,6 +73,7 @@ class LoadModelDemo {
     const loader = new GLTFLoader();
     loader.load('./lico-actions-3-subd.glb', (gltf) => {
       gltf.scene.traverse(c => {
+        c.depthWrite = true;
         c.receiveShadow = true;
         if (c.name == "floor")
           c.castShadow = false;
