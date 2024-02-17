@@ -88,10 +88,10 @@ class LoadModelDemo {
 
       });
 
-      const idsToRemove = []
+      const idsToRemove = [];
 
       gltf.animations[0].tracks.forEach((t, i) => {
-          if (t.name.includes('mixamorigNeck.quaternion')) {
+          if (t.name.includes('mixamorigHead.quaternion')) {
               idsToRemove.push(i)
           }
       })
@@ -110,10 +110,7 @@ class LoadModelDemo {
       this.playing = 0;
 
       this._scene.add(gltf.scene);
-
-      alert(this.neckBone);
       this.neckBone = gltf.scene.getObjectByName('mixamorigHead');
-      alert(this.neckBone);
     });
 
   }
