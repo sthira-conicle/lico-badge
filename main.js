@@ -68,7 +68,7 @@ class LoadModelDemo {
     this._LoadModel();
     this.neckBone = null;
     this.mouse = new THREE.Vector2();
-    this._threejs.domElement.addEventListener('mousemove', _onMouseMove, false);
+    this._threejs.domElement.addEventListener('mousemove', this._onMouseMove, false);
     this._RAF();
   }
 
