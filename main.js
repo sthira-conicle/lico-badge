@@ -67,7 +67,7 @@ class LoadModelDemo {
 
     this._LoadModel();
     this.neckBone = null;
-    this._threejs.domElement.addEventListener('mousemove', this._onMouseMove, false);
+    this._threejs.domElement.addEventListener('mousemove', this._onMouseMove(this.neckBone), false);
     this._RAF();
   }
 
@@ -115,14 +115,14 @@ class LoadModelDemo {
     });
 
   }
-  _onMouseMove(event) {
+  _onMouseMove(event, neckBone) {
       let mouse = new THREE.Vector2();
       mouse.set(
-          (event.clientX / this._threejs.domElement.clientWidth) * 2 - 1,
-          -(event.clientY / this._threejs.domElement.clientHeight) * 2 + 1
+          (event.clientX / this.clientWidth) * 2 - 1,
+          -(event.clientY / this.clientHeight) * 2 + 1
       );
 
-      this.neckBone && this.neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
+      neckBone && neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
   }
 
   _OnWindowResize() {
