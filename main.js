@@ -28,7 +28,6 @@ class LoadModelDemo {
     const aspect = 1920 / 1080;
     const near = 1;
     const far = 1000.0;
-    let neckBone;
     this._camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
     this._camera.position.set(0, 0.5, 2.3);
     this._camera.lookAt(new THREE.Vector3(0, 0.6, 0));
@@ -71,6 +70,7 @@ class LoadModelDemo {
   }
 
   _LoadModel() {
+    var neckBone;
     const loader = new GLTFLoader();
     loader.load('./lico-actions-subd.glb', (gltf) => {
       gltf.scene.traverse(c => {
@@ -117,13 +117,13 @@ class LoadModelDemo {
     const mouse = new THREE.Vector2();
             function onMouseMove(event) {
                 mouse.set(
-                    (event.clientX / renderer.domElement.clientWidth) * 2 - 1,
-                    -(event.clientY / renderer.domElement.clientHeight) * 2 + 1
+                    (event.clientX / this._threejs.domElement.clientWidth) * 2 - 1,
+                    -(event.clientY / this._threejs.domElement.clientHeight) * 2 + 1
                 );
 
                 neckBone && neckBone.lookAt(mouse.x - 0.1, mouse.y + 1.1, 1);
             }
-            renderer.domElement.addEventListener('mousemove', onMouseMove, false);
+            this._threejs.domElement.addEventListener('mousemove', onMouseMove, false);
   }
 
   _OnWindowResize() {
