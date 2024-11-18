@@ -92,7 +92,7 @@ export default {
             c.material.depthWrite = true;
           }
           c.receiveShadow = true;
-          // c.castShadow = c.name !== "floor";
+          c.castShadow = c.name !== "floor";
 
         });
 
@@ -122,12 +122,13 @@ export default {
     },
     onMouseMove(event) {
       const rect = this.threejs.domElement.getBoundingClientRect();
-      const centerX = rect.left + (this.width/2);
-      const centerY = rect.top + (this.width/2);
+      const centerX = rect.left + (this.width*1.8/2);
+      const centerY = rect.top + (this.width*1.8/2);
       this.mouse.set(
         event.clientX - centerX < 0 ? (event.clientX - centerX) / centerX : (event.clientX - centerX) / (event.currentTarget.innerWidth - centerX),
         event.clientY - centerY < 0 ? (event.clientY - centerY) / centerY * -1 : (event.clientY - centerY) / (event.currentTarget.innerHeight - centerY) * -1
       );
+      console.log(this.mouse.x)
 
 //alternative for better performance
 
@@ -136,7 +137,7 @@ export default {
       //   -(event.clientY / event.currentTarget.innerHeight) * 2 + 1
       // );
       if (this.neckBone) {
-        this.neckBone.lookAt(this.mouse.x / 2, (this.mouse.y + 0.8) / 2, 1);
+        this.neckBone.lookAt(this.mouse.x / 2, (this.mouse.y + 0.6) / 2, 1);
       }
     },
     raf() {
