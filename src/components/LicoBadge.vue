@@ -128,7 +128,6 @@ export default {
         event.clientX - centerX < 0 ? (event.clientX - centerX) / centerX : (event.clientX - centerX) / (event.currentTarget.innerWidth - centerX),
         event.clientY - centerY < 0 ? (event.clientY - centerY) / centerY * -1 : (event.clientY - centerY) / (event.currentTarget.innerHeight - centerY) * -1
       );
-      console.log(this.mouse.x)
 
 //alternative for better performance
 
